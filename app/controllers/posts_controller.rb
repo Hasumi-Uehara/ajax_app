@@ -6,6 +6,8 @@ class PostsController < ApplicationController
   def create
     Post.create(content: params[:content], checked: false)
     render json:{ post: post }
+    # 7行目は、checked:カラムにfalse(＝まだ既読になっていない)を、content:カラムにparams[:content])を保存する。
+    # 8行目は、json形式でchecked.jsにデータ(変数post)を返却してる。
   end
 
   def checked
@@ -18,5 +20,6 @@ class PostsController < ApplicationController
 
     item = Post.find(params[:id])
     render json: { post: item }
+    # 19行目でPost.find(params[:id])を代入したitemを、json形式でpostに出力する。
   end
 end
